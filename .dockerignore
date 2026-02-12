@@ -1,0 +1,26 @@
+# Build artifacts
+node_modules
+dist
+
+# Version control
+.git
+.gitignore
+
+# Environment files (secrets should come from compose/runtime)
+.env
+.env.*
+
+# Logs and temporary files
+*.log
+npm-debug.log*
+.npm
+
+# Development files
+.vscode
+.idea
+*.swp
+.DS_Store
+
+# Documentation
+README.md
+docs/

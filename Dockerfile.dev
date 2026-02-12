@@ -1,0 +1,11 @@
+FROM nixos/nix:latest
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN echo "experimental-features = nix-command flakes" >> /etc/nix/nix.conf
+RUN nix-shell -p nodejs_20 --run "npm ci"
+
+COPY . .
+
+CMD ["nix-shell", "-p", "nodejs_20", "--run", "npm run dev"]
