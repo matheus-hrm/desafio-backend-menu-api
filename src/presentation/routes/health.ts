@@ -1,5 +1,5 @@
 import { FastifyInstance } from "fastify";
-import { DbHealthChecker } from "../../application/ports/db-health-checker.js";
+import type { DbHealthChecker } from "../../application/ports/db-health-checker.js";
 
 type HealthRouteDeps = {
     dbHealthChecker: DbHealthChecker;
