@@ -16,7 +16,7 @@ export class ProductRepository {
     constructor(private readonly dbQuery: dbQuery) { }
 
     async create(productData: CreateProductData): Promise<Product> {
-        const [result] = await this.dbQuery(
+        await this.dbQuery(
             `INSERT INTO products
             (id, name, price, category_id, hidden)
             VALUES (?, ?, ?, ?, ?)`,
