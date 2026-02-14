@@ -18,16 +18,6 @@ export type Category = {
 
 export type Categories = 'starter' |'main' | 'dessert' | 'beverage'
 
-export type Product = {
-  id: UUID;
-  name: string;
-  price: number;
-  hidden: boolean;
-  categoryId: UUID | null;
-  createdAt: Date;
-  updatedAt: Date;
-};
-
 export type Promotion = {
   id: UUID;
   productId: UUID;
@@ -50,3 +40,5 @@ export type MenuItem = {
   promotionId: UUID | null;
   promotionDescription: string | null;
 };
+
+export * from './product.js';
