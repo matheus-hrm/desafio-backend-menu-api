@@ -1,6 +1,5 @@
 import { makeDbHealthChecker, makeDbQuery, registerDb } from '../infra/db/mysql.js'
 import { ProductRepository } from '../infra/repositories/product-repository.js'
-import { makecreateProduct } from '../application/usecases/create-product.js'
 import { registerRoutes } from '../presentation/routes/index.js'
 import { databaseConfig } from './config/env.js'
 import GenerateUUID from '../infra/ids/index.js'
@@ -12,14 +11,11 @@ registerDb(app, databaseConfig)
 const dbHealthChecker = makeDbHealthChecker(app)
 const productRepository = new ProductRepository(makeDbQuery(app))
 const idGenerator = new GenerateUUID()
-const createProduct = makecreateProduct({
-  ProductRepository: productRepository,
-  IdGenerator: idGenerator
-})
 
 registerRoutes(app, {
   dbHealthChecker,
-  createProduct
+  productRepository,
+  idGenerator
 })
 
 const start = async () => {
